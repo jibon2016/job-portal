@@ -26,7 +26,7 @@ jobs:
         password: ${{ secrets.ks_ftp_password }}
         server-dir: /jobs.koresearch.net/
 
-    - name: 📂 Sync files in jibon.dev
+    - name: 📂 Sync files in jibon
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftp.jibon.dev
