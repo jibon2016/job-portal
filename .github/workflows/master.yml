@@ -10,8 +10,6 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-    - name: Ziggy Generate
-      run: php artisan ziggy:generate
     - name: Node package install
       run: npm install
     - name: Node file compiled
@@ -26,7 +24,7 @@ jobs:
         password: ${{ secrets.ks_ftp_password }}
         server-dir: /jobs.koresearch.net/
 
-    - name: 📂 Sync files in jibon.dev
+    - name: 📂 Sync files in jibon
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftp.jibon.dev
