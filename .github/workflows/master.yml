@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - master
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    - name: Node package install
+      run: npm install
+    - name: Node file compiled
+      run: npm run build
+
+    - name: 📂 Sync files in KS
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.korekode.net
+        username: ${{ secrets.ks_ftp_username }}
+        password: ${{ secrets.ks_ftp_password }}
+        server-dir: /jobs.koresearch.net/
+
+    - name: 📂 Sync files in jibon.dev
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.jibon.dev
+        username: ${{ secrets.jibon_ftp_username }}
+        password: ${{ secrets.jibon_ftp_password }}
+        server-dir: /public_html/jobs/
