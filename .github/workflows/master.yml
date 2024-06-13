@@ -10,6 +10,13 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
+    - name: Setup PHP with pre-release PECL extension
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: xdebug-beta
+    - name: Vendor Install
+      run: composer install --optimize-autoloader --no-dev --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - name: Node package install
       run: npm install
     - name: Node file compiled
