@@ -10,10 +10,13 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
+    - name: Ziggy Generate
+      run: php artisan ziggy:generate
     - name: Node package install
       run: npm install
     - name: Node file compiled
       run: npm run build
+
 
     - name: 📂 Sync files in KS
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
