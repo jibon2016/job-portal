@@ -27,14 +27,14 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v3.0.0
       with:
         server: ftp.korekode.net
-        username: ${{ secrets.ks_ftp_username }}
-        password: ${{ secrets.ks_ftp_password }}
+        username: ${{ secrets.ks-ftp-username }}
+        password: ${{ secrets.ks-ftp-password }}
         server-dir: /jobs.koresearch.net/
 
     - name: 📂 Sync files in jibon.dev
       uses: SamKirkland/FTP-Deploy-Action@v3.0.0
       with:
         server: ftp.jibon.dev
-        username: ${{ secrets.jibon_ftp_username }}
-        password: ${{ secrets.jibon_ftp_password }}
+        username: ${{ secrets.jibon-ftp-username }}
+        password: ${{ secrets.jibon-ftp-password }}
         server-dir: /public_html/jobs/
