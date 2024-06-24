@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
     - name: Setup PHP with pre-release PECL extension
       uses: shivammathur/setup-php@v2
       with:
@@ -24,21 +24,18 @@ jobs:
 
 
     - name: 📂 Sync files in KS
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      uses: SamKirkland/FTP-Deploy-Action@v4.0.0
       with:
         server: ftp.korekode.net
         username: ${{ secrets.ks_ftp_username }}
         password: ${{ secrets.ks_ftp_password }}
         server-dir: /jobs.koresearch.net/
-        log-level: verbose
-        timeout: 60000
+    
 
-    - name: 📂 Sync files in jibon.dev
-      uses: SamKirkland/FTP-Deploy-Action@v3.0.0
+    - name: 📂 Sync files in jibon
+      uses: SamKirkland/FTP-Deploy-Action@v4.0.0
       with:
         server: ftp.jibon.dev
         username: ${{ secrets.jibon_ftp_username }}
         password: ${{ secrets.jibon_ftp_password }}
         server-dir: /public_html/jobs
-        log-level: verbose
-        timeout: 60000
