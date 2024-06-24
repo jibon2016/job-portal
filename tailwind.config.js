@@ -17,6 +17,7 @@ export default {
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                "hanken-grotesk" : ['Hanken Grotesk', ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -4,28 +4,21 @@ import logo from '/resources/images/logo.png';
 import MainContent from '@/Components/MainContent.vue'
 
 defineProps({
-    canLogin: {
-        type: Boolean,
-    },
-    canRegister: {
-        type: Boolean,
-    },
-    laravelVersion: {
-        type: String,
+    jobs: {
+        type: Object,
         required: true,
     },
-    phpVersion: {
-        type: String,
+    featured_jobs: {
+        type: Object,
         required: true,
-    },
-});
-
+    }
+})
 
 </script>
 
 <template>
     <Head title="Welcome" />
-    <div class="bg-gray-50 text-black/90 dark:bg-black dark:text-white/50 px-10 ">
+    <div class=" text-black/90 dark:bg-black dark:text-white/50 px-10 ">
         <nav class="flex justify-between items-center border-b-2 border-white/50 py-4">
             <div>
                 <a href="">
@@ -42,6 +35,7 @@ defineProps({
                 <a href="">Post a Job</a>
             </div>
         </nav>
-        <MainContent></MainContent>
+
+        <MainContent :jobs="jobs" :featuredJobs="featured_jobs" ></MainContent>
     </div>
 </template>
