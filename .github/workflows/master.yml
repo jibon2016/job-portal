@@ -35,7 +35,7 @@ jobs:
     - name: 📂 Sync files in jibon
       uses: SamKirkland/FTP-Deploy-Action@v4.0.0
       with:
-        server: ftp.jibon.dev
+        server: 103.73.191.138
         username: ${{ secrets.jibon_ftp_username }}
         password: ${{ secrets.jibon_ftp_password }}
         server-dir: /public_html/jobs
