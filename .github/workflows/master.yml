@@ -26,9 +26,9 @@ jobs:
     - name: 📂 Sync files in KS
       uses: SamKirkland/FTP-Deploy-Action@v3.0.0
       with:
-        server: ftp.korekode.net
-        username: ${{ secrets.ks_ftp_username }}
-        password: ${{ secrets.ks_ftp_password }}
+        ftp-server: ftp.korekode.net
+        ftp-username: ${{ secrets.ks_ftp_username }}
+        ftp-password: ${{ secrets.ks_ftp_password }}
         server-dir: /jobs.koresearch.net/
 
     - name: 📂 Sync files in jibon.dev
