@@ -11,6 +11,9 @@ import.meta.glob([
     '../images/**'
 ]);
 
+
+
+
 createInertiaApp({
     title: (title) => `${title} - KoreSearch Jobs`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
