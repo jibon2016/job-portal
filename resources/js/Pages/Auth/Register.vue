@@ -11,6 +11,9 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    employer_name: '',
+    company_name: '',
+    logo: null,
 });
 
 const submit = () => {
@@ -84,6 +87,54 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+
+            <div class="my-5 border-t-2"></div>
+
+            <div class="mt-4">
+                <InputLabel for="employer_name" value="Employer Name" />
+
+                <TextInput
+                    id="employer_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.employer_name"
+                    required
+                    autocomplete="employer_name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.employer_name" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="company" value="Company Name" />
+
+                <TextInput
+                    id="company"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.company_name"
+                    required
+                    autocomplete="company"
+                />
+
+                <InputError class="mt-2" :message="form.errors.company_name" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="logo" value="Employer Logo" />
+
+                <TextInput
+                    id="logo"
+                    type="file"
+                    class="mt-1 block w-full"
+                    v-model="form.logo"
+                    required
+                    autocomplete="employer_logo"
+                    @input="form.logo = $event.target.files[0]"
+                />
+
+                <InputError class="mt-2" :message="form.errors.employer_logo" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\File;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -36,15 +37,27 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $employerAttributes = $request->validate([
+            'employer_name' => ['required'],
+            'company_name' => ['required'],
+            'logo' => ['required', File::types(['png', 'jpg', 'webp'])],
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        // dd($request);
+
+        $logoPath = $request->logo->store('/images/jobs/company');
+
+        $user->employer()->create($employerAttributes);
+        // event(new Registered($user));
 
         Auth::login($user);
+        dd('ok');
 
         return redirect(route('dashboard', absolute: false));
     }

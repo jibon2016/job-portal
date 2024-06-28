@@ -19,8 +19,8 @@ class JobController extends Controller
 
 
         return Inertia::render('Jobs/Index',[
-            'featured_jobs' => $jobs[1],
-            'jobs' => $jobs[0],
+            'featured_jobs' => $jobs[1] ?? NULL,
+            'jobs' => $jobs[0] ?? NULL,
         ]);
     }
 
