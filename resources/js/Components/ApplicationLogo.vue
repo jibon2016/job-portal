@@ -1,5 +1,6 @@
 <script setup>
-import logo from '/resources/images/logo.png';
+// import logo from '/resources/images/logo.png';
+const logo = getImageUrl("logo.png");
 </script>
 
 <template>
