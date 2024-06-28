@@ -1,9 +1,10 @@
 <script setup>
 // import logo from '/resources/images/logo.png';
 function getImageUrl(name) {
-    return new URL(`/resources/images/${name}`, import.meta.url).href
+    return new URL(`/resources/images/${name}`, import.meta.url + '/public/').href
 }
 const logo = getImageUrl("logo.png");
+console.log(logo);
 </script>
 
 <template>
