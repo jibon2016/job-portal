@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Job extends Model
 {
     use HasFactory;
+    protected $table = 'ks_jobs';
 
     public function tag(string $name) : void
     {

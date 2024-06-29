@@ -17,7 +17,6 @@ class JobController extends Controller
     {
         $jobs = Job::with('employer')->get()->groupBy('featured');
 
-
         return Inertia::render('Jobs/Index',[
             'featured_jobs' => $jobs[1] ?? NULL,
             'jobs' => $jobs[0] ?? NULL,

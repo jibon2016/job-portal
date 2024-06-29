@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Employer;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,12 +20,17 @@ class JobFactory extends Factory
     {
         return [
             'employer_id' => Employer::factory(),
-            'title' => fake()->jobTitle,
+            'job_title' => fake()->jobTitle,
+            'company_name' => fake()->company,
+            'description' => fake()->text,
+            'requirement' => fake()->text,
+            'exp_max' => fake()->randomElement([1, 2, 3]),
+            'deadline' => date('Y-m-d 00:00:00', strtotime("+30 days")),
             'vacancy' => rand(1,5),
-            'salary' => fake()->randomElement(['$60,000 USD', '$90,000 USD', '$150,000 USD']),
+            'salary_min' => fake()->randomElement(['$60,000 USD', '$90,000 USD', '$150,000 USD']),
             'location' => 'Remote',
-            'schedule' => fake()->randomElement(['Full Time', 'Part Time']),
-            'url' => fake()->url,
+            'employment_type' => fake()->randomElement(['Full Time', 'Part Time']),
+            'company_image' => fake()->url,
             'featured' => false,
 
         ];

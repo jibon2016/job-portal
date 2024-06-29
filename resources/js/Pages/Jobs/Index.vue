@@ -27,7 +27,7 @@ defineProps({
             </section>
             <section class="basis-1/2">
                 <SectionHeading>New Jobs</SectionHeading>
-                <JobCard v-for="job in featured_jobs " :key="job.id" :job="job"/>
+                <JobCard v-for="job in featured_jobs " :key="job.id" :job="job" />
             </section>
         </div>
     </AuthenticatedLayout>

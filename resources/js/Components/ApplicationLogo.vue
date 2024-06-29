@@ -7,7 +7,7 @@ const logo = getImageUrl("logo.png");
 </script>
 
 <template>
-    <a href="">
+    <a href="/">
         <img class="h-[30px] " :src="logo" alt="Logo">
     </a>
 </template>

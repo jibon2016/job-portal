@@ -10,11 +10,11 @@ class SearchController extends Controller
 {
     public function __invoke()
     {
-        $jobs = Job::where('title', 'LIKE', '%'. request('q').'%')->with('employer')->get();
+        $jobs = Job::where('job_title', 'LIKE', '%'. request('q').'%')->with('employer')->get();
 
         return Inertia::render('Jobs/Result',[
-            'jobs' => $jobs,
-            'q' => request('q'),
+            'jobs' => $jobs ?? Null,
+            'search' => request('q'),
         ]);
     }
 }

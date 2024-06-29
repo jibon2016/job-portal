@@ -15,14 +15,14 @@ class JobSeeder extends Seeder
      */
     public function run(): void
     {
-        $tag = Tag::factory(3)->create();
-        Job::factory(25)->hasAttached($tag)->create(new Sequence([
+        // $tag = Tag::factory(3)->create();
+        Job::factory(25)->create(new Sequence([
             'featured' => true,
-            'schedule' => 'Full Time',
+            'employment_type' => 'Full Time',
         ],
         [
             'featured' => false,
-            'schedule' => 'Part Time',
+            'employment_type' => 'Part Time',
         ]));
     }
 }
