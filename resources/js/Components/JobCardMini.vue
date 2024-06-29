@@ -7,7 +7,7 @@
             type: Object,
             required: true,
         },
-        desc: {
+        active:{
             type: Boolean,
             default: false,
         }
@@ -15,7 +15,7 @@
 
 </script>
 <template>
-    <div class="flex md:flex-row flex-col justify-between bg-gray-500/10 p-4 m-2 rounded-md border border-gray-400 hover:bg-gray-700/20 mt-3 hover:border-blue-800 group">
+    <div class="flex md:flex-row flex-col justify-between bg-gray-500/10 p-4 m-2 rounded-md border  hover:bg-gray-700/20 mt-3 hover:border-blue-800 group" :class="active ? 'border-blue-600': 'border-gray-400'">
         <div class="basis-1/3 px-2 mb-3">
             <img class="w-[140px] h-[100px]" :src="imageLInk" alt="">
         </div>
