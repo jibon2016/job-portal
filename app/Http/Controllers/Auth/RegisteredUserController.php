@@ -47,17 +47,19 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            // 'role' => 'employer'
         ]);
-
-        // dd($request);
 
         $logoPath = $request->logo->store('/images/jobs/company');
 
-        $user->employer()->create($employerAttributes);
+        $user->employer()->create([
+            'employer_name' => $employerAttributes['employer_name'],
+            'company_name' => $employerAttributes['company_name'],
+            'logo' => $logoPath
+        ]);
         // event(new Registered($user));
 
         Auth::login($user);
-        dd('ok');
 
         return redirect(route('dashboard', absolute: false));
     }

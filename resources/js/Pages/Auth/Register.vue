@@ -128,13 +128,12 @@ const submit = () => {
                     id="logo"
                     type="file"
                     class="mt-1 block w-full"
-                    v-model="form.logo"
                     required
                     autocomplete="employer_logo"
                     @input="form.logo = $event.target.files[0]"
                 />
 
-                <InputError class="mt-2" :message="form.errors.employer_logo" />
+                <InputError class="mt-2" :message="form.errors.logo" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

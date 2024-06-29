@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [JobController::class, 'index']);
 
-
+Route::get('/search', SearchController::class);
 
 
 
