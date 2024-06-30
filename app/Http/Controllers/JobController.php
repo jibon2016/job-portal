@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
-use App\Models\Employer;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class JobController extends Controller
@@ -24,11 +25,22 @@ class JobController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function all()
+    {
+        $jobs = Job::where('employer_id', Auth::user()->id)->get();
+        return Inertia::render('Jobs/All',[
+            'jobs' => $jobs ?? Null,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return Inertia::render('Jobs/Create');
     }
 
     /**
@@ -36,15 +48,24 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
-        //
+        $attribute = $request->all();
+        $imagePath = $request->company_image->store('/images/jobs/company');
+        $attribute["employer_id"] = Auth::user()->id;
+        $attribute["company_image"] = $imagePath;
+        $attribute["featured"] = $request->featured ?? false;
+        $job = Job::create($attribute);
+        return Inertia::location(route('jobs.all'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Job $job)
+    public function show($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        return Inertia::render('Jobs/Edit',[
+            'job' => $job
+        ]);
     }
 
     /**

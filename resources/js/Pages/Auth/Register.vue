@@ -14,6 +14,7 @@ const form = useForm({
     password_confirmation: '',
     employer_name: '',
     company_name: '',
+    website: '',
     logo: null,
 });
 
@@ -29,6 +30,7 @@ const submit = () => {
         <Head title="Register" />
 
         <form @submit.prevent="submit">
+            <h4 class="text-center text-xl text-bg-kore text-gray-500 font-semibold">Employer Register</h4>
             <div>
                 <InputLabel for="fname" value="First Name" />
 
@@ -136,6 +138,22 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.company_name" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="website" value="Company Website" />
+
+                <TextInput
+                    id="website"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.website"
+                    required
+                    autocomplete="website"
+                    placeholder="https://example.com"
+                />
+
+                <InputError class="mt-2" :message="form.errors.website" />
             </div>
 
             <div class="mt-4">

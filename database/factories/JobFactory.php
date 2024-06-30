@@ -22,17 +22,18 @@ class JobFactory extends Factory
             'employer_id' => Employer::factory(),
             'job_title' => fake()->jobTitle,
             'company_name' => fake()->company,
+            'summary' => fake()->text,
             'description' => fake()->text,
             'requirement' => fake()->text,
-            'exp_max' => fake()->randomElement([1, 2, 3]),
+            'experience' => fake()->randomElement([1, 2, 3]),
             'deadline' => date('Y-m-d 00:00:00', strtotime("+30 days")),
             'vacancy' => rand(1,5),
-            'salary_min' => fake()->randomElement(['$60,000 USD', '$90,000 USD', '$150,000 USD']),
+            'salary' => fake()->randomElement(['$60,000 USD', '$90,000 USD', '$150,000 USD']),
             'location' => 'Remote',
             'employment_type' => fake()->randomElement(['Full Time', 'Part Time']),
             'company_image' => fake()->url,
+            'website' => fake()->url,
             'featured' => false,
-
         ];
     }
 }

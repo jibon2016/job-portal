@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
         $employerAttributes = $request->validate([
             'employer_name' => ['required'],
             'company_name' => ['required'],
+            'website' => ['required'],
             'logo' => ['required', File::types(['png', 'jpg', 'webp'])],
         ]);
 
@@ -57,7 +58,7 @@ class RegisteredUserController extends Controller
 
         ]);
 
-        $logoPath = $request->logo->store('/images/jobs/company');
+        $logoPath = $request->logo->store('/images/company');
 
         $user->employer()->create([
             'employer_name' => $employerAttributes['employer_name'],

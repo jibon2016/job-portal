@@ -13,7 +13,8 @@ export default {
     theme: {
         extend: {
             colors:{
-                "gray1": "#ddd"
+                "gray1": "#ddd",
+                'kore' : "#281348"
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

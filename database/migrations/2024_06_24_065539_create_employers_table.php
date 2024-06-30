@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string('employer_name');
             $table->string('company_name');
+            $table->string('website');
             $table->string('logo');
             $table->timestamps();
         });

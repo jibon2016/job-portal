@@ -2,7 +2,7 @@
 import { Head, Link} from '@inertiajs/vue3';
 import Navbar from '@/Components/Navbar.vue';
 
-defineProps({    
+defineProps({
     search:{
         type: String,
         default: '',
@@ -18,7 +18,10 @@ defineProps({
             <section class="text-center pt-6">
                 <h1 class="font-bold text-4xl">Let's Find Your Next Job</h1>
                 <form action="/search" method="GET" class="mt-6">
-                    <input type="text" :value="search" name="q" placeholder="Web Developer.." class="rounded-xl bg-white px-5 py-4 w-full max-w-xl">
+                    <div class="">
+                        <input type="text" :value="search" name="q" placeholder="Web Developer.." class="rounded-xl bg-white px-5 py-4 w-full max-w-xl">
+                        <button class="px-5 py-4 bg-kore rounded-xl text-white ml-2" type="submit">Search</button>
+                    </div>
                 </form>
             </section>
             <slot/>
