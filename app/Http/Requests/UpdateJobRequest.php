@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class UpdateJobRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateJobRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,20 @@ class UpdateJobRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+         return [
+            'job_title'=> ['required'],
+            'company_name' => ['required'],
+            'summary' => ['required'],
+            'description' => ['required'],
+            'requirement' => ['required'],
+            'experience' => ['required'],
+            'deadline' => ['required'],
+            'vacancy' => ['required'],
+            'salary' => ['required'],
+            'location' => ['required'],
+            'employment_type' => ['required'],
+            // 'company_image' => [ File::types(['png', 'jpg', 'webp'])],
+            'website' => ['required'],
         ];
     }
 }

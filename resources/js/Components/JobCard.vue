@@ -36,7 +36,7 @@ import { useForm } from '@inertiajs/vue3';
         </div>
         <div class="basis-1/3 text-sm">
             <h4 class="pb-1">Job Description:</h4>
-            <p class="text-justify text-xs ">{{ job.summary }}...</p>
+            <p class="text-justify text-xs " v-html="job.summary"></p>
         </div>
     </div>
 </template>

@@ -6,30 +6,41 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import Editor from '@tinymce/tinymce-vue'
 
+const props = defineProps({
+        job: {
+            type: Object,
+            required: true,
+        },
+    })
 
 const form = useForm({
-    job_title: '',
-    company_name: '',
-    vacancy: '',
-    deadline: '',
-    summary: '',
-    description: '',
-    requirement: '',
-    location: '',
-    experience: '',
-    employment_type: '',
-    industry_type: '',
-    salary: '',
-    featured: '',
+    job_title: props.job.job_title,
+    company_name: props.job.company_name,
+    vacancy: props.job.vacancy,
+    deadline: props.job.deadline,
+    summary: props.job.summary,
+    description: props.job.description,
+    requirement: props.job.requirement,
+    location: props.job.location,
+    experience: props.job.experience,
+    employment_type: props.job.employment_type,
+    industry_type: props.job.industry_type,
+    salary: props.job.salary,
+    featured: props.job.featured,
     company_image: null,
-    website: '',
+    website: props.job.website,
 });
 
+// const submit = () => {
+//     router.post('/jobs/'+ props.job.id + "/update", useForm)
+// };
+
+
 const submit = () => {
-    form.post(route('jobs.store'), {
+    form.post(route('jobs.update', {"id": props.job.id}), {
         onFinish: () => form.reset('featured'),
     });
 };
@@ -41,16 +52,18 @@ const submit = () => {
     <BackendLayout>
         <template #header>
             <div class="flex justify-between">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create Job</h2>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Update Job</h2>
                 <Link class="bg-kore text-gray-100 py-2 px-3 rounded-md" :href="route('jobs.all')">Back</Link>
             </div>
         </template>
+
+        {{ form.errors }}
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <form @submit.prevent="submit" enctype="multipart/form-data" class="p-10 max-w-3xl m-auto">
-                        <h4 class="text-center text-xl text-bg-kore text-gray-500 font-semibold">Create Job</h4>
+                        <h4 class="text-center text-xl text-bg-kore text-gray-500 font-semibold">Update Job</h4>
 
 
 
@@ -204,7 +217,6 @@ const submit = () => {
                                 type="text"
                                 class="mt-1 block w-full"
                                 v-model="form.industry_type"
-                                required
                                 autofocus
                                 autocomplete="industry_type"
                             />
@@ -249,7 +261,6 @@ const submit = () => {
                                 type="file"
                                 class="mt-1 block w-full"
                                 v-model="form.company_image"
-                                required
                                 autofocus
                                 autocomplete="company_image"
                                 @input="form.company_image = $event.target.files[0]"
@@ -272,8 +283,6 @@ const submit = () => {
 
                             <InputError class="mt-2" :message="form.errors.website" />
                         </div>
-
-
 
                         <PrimaryButton class="ms-4 mt-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Save

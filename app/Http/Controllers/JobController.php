@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
 class JobController extends Controller
 {
@@ -79,9 +80,17 @@ class JobController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateJobRequest $request, Job $job)
+    public function update(UpdateJobRequest $request, $id)
     {
-        //
+        $attribute = $request->all();
+        $job = Job::findOrFail($id);
+        if ($request->company_image) {
+            $imagePath = $request->company_image->store('/images/jobs/company');
+        }
+        $attribute["company_image"] = $imagePath ?? $request->company_image;
+        $attribute["featured"] = $request->featured ?? false;
+        $job->update($attribute);
+        return Inertia::location(route('jobs.all'));
     }
 
     /**
