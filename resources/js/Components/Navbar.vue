@@ -20,6 +20,7 @@ const toggleButton = () => {
                 <a class="hover:text-blue-800" href="">Jobs</a>
                 <a class="hover:text-blue-800" href="">Careers</a>
                 <a class="hover:text-blue-800" href="">Companies</a>
+                <a class="hover:text-blue-800" href="/register">Signup</a>
                 <a class="hover:text-blue-800" href="/login">Post a Job</a>
             </div>
             <div class="space-x-6 font-bold md:block hidden">
@@ -27,8 +28,9 @@ const toggleButton = () => {
                 <a href="">Careers</a>
                 <a href="">Companies</a>
             </div>
-            <div class="space-x-3 md:block hidden">
-                <a href="/login">Post a Job</a>
+            <div class="space-x-4 md:block hidden text-kore">
+                <a class="hover:text-gray-500 cursor-pointer" href="/register">Signup</a>
+                <a class="hover:text-gray-500 cursor-pointer" href="/login">Post a Job</a>
             </div>
         </nav>
 </template>

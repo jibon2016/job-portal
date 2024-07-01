@@ -17,7 +17,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with('employer')->get()->groupBy('featured');
+        $jobs = Job::with('employer')->latest()->get()->groupBy('featured');
 
         return Inertia::render('Jobs/Index',[
             'featured_jobs' => $jobs[1] ?? NULL,
