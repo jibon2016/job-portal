@@ -4,6 +4,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -11,6 +12,9 @@ Route::get('/', [JobController::class, 'index']);
 
 Route::get('/search', SearchController::class);
 
+Route::get('/storage', function(){
+    Artisan::call('storage:link');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
