@@ -12,10 +12,9 @@ Route::get('/', [JobController::class, 'index']);
 
 Route::get('/search', SearchController::class);
 
-Route::get('/storage', function(){
+Route::get('/storage-link', function(){
     Artisan::call('storage:link');
-
-    return "ok";
+    return back();
 });
 
 Route::get('/dashboard', function () {
