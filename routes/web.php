@@ -14,6 +14,8 @@ Route::get('/search', SearchController::class);
 
 Route::get('/storage', function(){
     Artisan::call('storage:link');
+
+    return "ok";
 });
 
 Route::get('/dashboard', function () {
