@@ -1,5 +1,5 @@
 <script setup>
-import _ from 'lodash';
+
     const randomNumber = Math.random(1, 100000);
     const imageLInk = `https://picsum.photos/seed/${randomNumber}/100/100`;
 

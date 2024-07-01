@@ -27,7 +27,7 @@ import { useForm } from '@inertiajs/vue3';
             <img class="w-[140px] h-[100px]" :src="imageLInk" alt="">
         </div>
         <div class="basis-1/3 pb-2 md:pb-0">
-            <a href="#" @click="storeData(job)"><h3 class="font-bold pb-1 underline group-hover:text-blue-800 transition-colors duration-900">{{ job.job_title }}</h3></a>
+            <a href="#" @click="storeData(job)"><h3 class="font-bold pb-1 underline group-hover:text-blue-800 transition-colors duration-900">{{ job.job_title.substring(0, 20) }}</h3></a>
             <div class="text-sm pr-2 md:pr-0">
                 <div class="text-gray-800 ">{{ job.company_name }}</div>
                 <div class="text-xs">Location: {{  job.location }}</div>
@@ -36,7 +36,7 @@ import { useForm } from '@inertiajs/vue3';
         </div>
         <div class="basis-1/3 text-sm">
             <h4 class="pb-1">Job Description:</h4>
-            <p class="text-justify text-xs " v-html="job.summary"></p>
+            <p class="text-justify text-xs " v-html="job.summary.substring(0, 100)"></p>
         </div>
     </div>
 </template>

@@ -13,7 +13,12 @@ defineProps({
 const handleClick = (job) => {
     router.get('/jobs/' + job.id + "/edit");
 }
-
+const handleClickDelete = (job) => {
+    let value = confirm('Are you Sure?')
+    if(value){
+        router.get('/jobs/' + job.id + "/delete");
+    }
+}
 </script>
 <template>
     <Head title="All Jobs" />
@@ -72,9 +77,16 @@ const handleClick = (job) => {
                             </p>
                             </td>
                             <td class="p-4 border-b border-blue-gray-50">
-                            <Link @click="handleClick(job)" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                Edit
-                            </Link>
+                                <p class="flex space-x-2">
+                                    <Link @click="handleClick(job)" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                        Edit
+                                    </Link> 
+                                    <span>|</span>
+                                    <Link @click="handleClickDelete(job)" class="text-red-700 block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                        Delete
+                                    </Link>
+                                </p>
+                            
                             </td>
                         </tr>
                         </tbody>

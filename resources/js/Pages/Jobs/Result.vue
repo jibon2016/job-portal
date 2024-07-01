@@ -37,8 +37,8 @@ if (localStorage.getItem('job')) {
 <template>
     <Head title="Search" />
     <AuthenticatedLayout :search="search">
-        <div class="flex mt-10">
-            <section class="basis-1/3 ">
+        <div class="flex mt-10 space-x-2">
+            <section class="basis-1/3 overflow-y-scroll max-h-screen pr-2">
                 <SectionHeading>Search Jobs</SectionHeading>
                 <JobCardMini v-for="job in jobs " :key="job.id" :job="job"/>
             </section>

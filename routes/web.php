@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/jobs/store' , [JobController::class, 'store'])->name('jobs.store');
     Route::get('/jobs/{id}/edit' , [JobController::class, 'show'])->name('jobs.show');
     Route::post('/jobs/{id}/update' , [JobController::class, 'update'])->name('jobs.update');
+    Route::get('/jobs/{id}/delete' , [JobController::class, 'destroy'])->name('jobs.destroy');
 });
 
 require __DIR__.'/auth.php';

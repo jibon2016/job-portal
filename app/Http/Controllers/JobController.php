@@ -87,7 +87,7 @@ class JobController extends Controller
         if ($request->company_image) {
             $imagePath = $request->company_image->store('/images/jobs/company');
         }
-        $attribute["company_image"] = $imagePath ?? $request->company_image;
+        $attribute["company_image"] = $imagePath ?? $job->company_image;
         $attribute["featured"] = $request->featured ?? false;
         $job->update($attribute);
         return Inertia::location(route('jobs.all'));
@@ -96,8 +96,10 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Job $job)
+    public function destroy($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->destroy($id);
+        return Inertia::location(route('jobs.all'));
     }
 }

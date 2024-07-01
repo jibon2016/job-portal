@@ -34,10 +34,6 @@ const form = useForm({
     website: props.job.website,
 });
 
-// const submit = () => {
-//     router.post('/jobs/'+ props.job.id + "/update", useForm)
-// };
-
 
 const submit = () => {
     form.post(route('jobs.update', {"id": props.job.id}), {
