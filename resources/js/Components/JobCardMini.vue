@@ -35,10 +35,10 @@
         </div>
         <div class="basis-2/3 pb-2 md:pb-0">
             <a href="#" @click="storeData(job)"><h3 class="font-bold pb-1 underline group-hover:text-blue-800 transition-colors duration-900">{{ job.job_title }}</h3></a>
-            <div class="text-sm pr-2 md:pr-0">
-                <div class="text-gray-800 ">{{ job.company_name }}</div>
-                <div class="text-xs">Location: {{  job.location }}</div>
-                <p class="text-xs">{{ job.employment_type }} - {{  job.salary }}</p>
+            <div class="text-sm font-semibold pr-2 md:pr-0">
+                <div class="text-gray-800 text-sm font-semibold">{{ job.company_name }}</div>
+                <div class="text-sm ">Location: {{  job.location }}</div>
+                <p class="text-sm">{{ job.employment_type }} - {{  job.salary }}</p>
             </div>
         </div>
     </div>
