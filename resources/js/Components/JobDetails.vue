@@ -1,5 +1,6 @@
 <script setup>
-import { reactive, watch } from 'vue';
+import { router, usePage } from '@inertiajs/vue3';
+import { reactive, computed } from 'vue';
 
 const props = defineProps({
     job: {
@@ -26,6 +27,20 @@ if (TempJob.value) {
 }
 
 
+const isLogin = computed(() => {
+    if(usePage().props.auth.user){
+        return true;
+    }
+    return false;
+})
+
+const handleApply = () => {
+    if (isLogin) {
+        router.get('https://koresearch.net/public/' + usePage().props.auth.user.id + '/' + TempJob.value.id );
+    }
+}
+
+
 </script>
 <template>
     <div v-if="TempJob.value" class="p-5 w-full border m-3 border-gray-400 rounded">
@@ -41,8 +56,8 @@ if (TempJob.value) {
                 <img class="w-[140px] h-[100px]" :src="logo" alt="">
             </div>
         </div>
-        <div class="">
-            <button class="bg-kore rounded-md px-3 py-2 mt-3 text-white font-bold">Apply now</button>
+        <div class="mt-5">
+            <a @click="handleApply" class="bg-kore rounded-md cursor-pointer px-3 py-2 mt-3 text-white font-bold">{{ isLogin ? 'Apply Now' : 'login' }}</a>
         </div>
         <div class="overflow-y-scroll h-[400px] mt-5">
             <div v-if="TempJob.value.summary" class="mt-5" >

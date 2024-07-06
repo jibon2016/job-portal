@@ -32,9 +32,9 @@
         <div class="basis-2/3 pb-2 md:pb-0">
             <a href="#" @click="storeData(job)"><h3 class="font-bold pb-1 underline group-hover:text-blue-800 transition-colors duration-900">{{ job.job_title }}</h3></a>
             <div class="text-sm font-semibold pr-2 md:pr-0">
-                <div class="flex items-center text-gray-800 font-semibold "><span class="material-symbols-outlined mr-1 text-md">apartment</span>{{ job.company_name }}</div>
-                <div class="flex items-center text-sm font-semibold"><span class="material-symbols-outlined  mr-1 text-md">checklist</span>{{ job.employment_type }} - {{  job.salary }}</div>
-                <div class="flex items-center text-sm font-semibold"><span class="material-symbols-outlined mr-1 text-md">location_on</span> {{ job.location }}</div>
+                <div class="flex items-center text-gray-800 font-semibold "><i class="text-[14px] fa fa-building mr-2"></i>{{ job.company_name }}</div>
+                    <div class="flex items-center text-sm font-semibold"><i class="text-[15px] fa fa-map-marker mr-3" ></i>{{ job.location }}</div>
+                    <div class="flex items-center text-sm font-semibold"><i class="text-[13px] fa fa-list mr-2"></i>{{ job.employment_type }}</div>
             </div>
         </div>
         <div class="basis-1/3 px-2 mb-3">
