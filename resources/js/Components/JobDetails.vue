@@ -21,19 +21,21 @@ if (localStorage.getItem('job')) {
 function getImageUrl(name) {
         return new URL(`/public/storage/${name}`, import.meta.url + '/public/').href
     }
+if (TempJob.value) {
     const logo = getImageUrl(TempJob.value.company_image);
+}
 
 
 </script>
 <template>
     <div v-if="TempJob.value" class="p-5 w-full border m-3 border-gray-400 rounded">
         <div class="flex">
-            <div class="basis-[70%]">
+            <div class="basis-[70%] space-y-2">
                 <h2 class="mt-2 text-xl text-black">{{ TempJob.value.job_title }}</h2>
-                <h5 class="mt-2 underline text-md text-gray-700 underline-offset-2">{{ TempJob.value.company_name }}</h5>
-                <p class="mt-1 text-md text-gray-700 ">{{ TempJob.value.location }} - {{ TempJob.value.employment_type }}</p>
-                <p class="mt-1 text-md text-gray-700 ">{{ TempJob.value.salary }}</p>
-                <p class="mt-1 text-md text-gray-700 ">Experience: {{ TempJob.value.experience   }} Year</p>
+                <h5 class="flex items-center mt-2 text-md text-gray-700 underline-offset-2"><span class="material-symbols-outlined mr-2 text-md">apartment</span><span class="underline">{{ TempJob.value.company_name }}</span></h5>
+                <p class="flex items-center mt-1 text-md text-gray-700 "><span class="material-symbols-outlined mr-2 text-md">location_on</span>{{ TempJob.value.location }} </p>
+                <p class="flex items-center mt-1 text-md text-gray-700 "><span class="material-symbols-outlined  mr-2 text-md">checklist</span>{{ TempJob.value.employment_type }} - {{ TempJob.value.salary }}</p>
+                <p class="flex items-center mt-1 text-md text-gray-700 "><span class="material-symbols-outlined mr-2">school</span> {{ TempJob.value.experience   }}</p>
             </div>
             <div class="basis-[30%]">
                 <img class="w-[140px] h-[100px]" :src="logo" alt="">

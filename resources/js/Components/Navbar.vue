@@ -9,7 +9,7 @@ const toggleButton = () => {
 }
 </script>
 <template>
-    <nav class="flex justify-between items-center border-b-2 border-white/50 py-4 " :class="{'mb-32' : menuBar}">
+    <nav class="flex justify-between items-center border-b-2 border-white/50 py-4 " :class="{'mb-48' : menuBar}">
             <div>
                 <ApplicationLogo />
             </div>
@@ -22,11 +22,13 @@ const toggleButton = () => {
                 <a class="hover:text-blue-800" href="">Companies</a>
                 <a class="hover:text-blue-800" href="/register">Signup</a>
                 <a class="hover:text-blue-800" href="/login">Post a Job</a>
+                <a class="bg-kore text-white py-2 px-3 rounded-md" href="https://koresearch.net/public">Back to Main</a>
             </div>
             <div class="space-x-6 font-bold md:block hidden">
-                <a href="">Jobs</a>
-                <a href="">Careers</a>
-                <a href="">Companies</a>
+                <a class="hover:text-blue-800" href="">Jobs</a>
+                <a class="hover:text-blue-800" href="">Careers</a>
+                <a class="hover:text-blue-800" href="">Companies</a>
+                <a class="bg-kore text-white p-2 rounded-md" href="https://koresearch.net/public">Back to Main</a>
             </div>
             <div class="space-x-4 md:block hidden text-kore">
                 <a class="hover:text-gray-500 cursor-pointer" href="/register">Signup</a>

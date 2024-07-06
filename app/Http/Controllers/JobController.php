@@ -102,4 +102,12 @@ class JobController extends Controller
         $job->destroy($id);
         return Inertia::location(route('jobs.all'));
     }
+
+    public function oneJob($id)
+    {
+        $job = Job::findOrFail($id);
+        return Inertia::render('Jobs/Single',[
+            'job' => $job ?? Null,
+        ]);
+    }
 }

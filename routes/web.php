@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [JobController::class, 'index']);
+Route::get('/job/{id}', [JobController::class, 'oneJob']);
 
 Route::get('/search', SearchController::class);
 
