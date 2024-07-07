@@ -22,21 +22,22 @@ if (localStorage.getItem('job')) {
 function getImageUrl(name) {
         return new URL(`/public/storage/${name}`, import.meta.url + '/public/').href
     }
-    
+
     const logo = getImageUrl(TempJob.value.company_image);
 
 
-
 const isLogin = computed(() => {
-    if(usePage().props.auth.user){
+    if(usePage().props.auth.user !== null){
         return true;
     }
     return false;
 })
 
 const handleApply = () => {
-    if (isLogin) {
+    if (isLogin.value) {
         router.get('https://koresearch.net/public/' + usePage().props.auth.user.id + '/' + TempJob.value.id );
+    }else{
+        router.get('/login')
     }
 }
 
