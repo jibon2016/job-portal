@@ -22,9 +22,9 @@ if (localStorage.getItem('job')) {
 function getImageUrl(name) {
         return new URL(`/public/storage/${name}`, import.meta.url + '/public/').href
     }
-if (TempJob.value) {
+    
     const logo = getImageUrl(TempJob.value.company_image);
-}
+
 
 
 const isLogin = computed(() => {
